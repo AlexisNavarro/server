@@ -16,3 +16,13 @@ Being that this will be an individual full stack development for a web applicati
 * **Helmet** is a npm package to secure Express.js applications by setting various HTTP headers related to security. Easy way to enhance the security of a web app by adding a set of recommended security headers.
 * **Morgan** is a npm package that provides middleware for logging HTTP requests in Node.js applications. Morgan stores detailed information about the incoming requests and outputs it to the console or a log file which allows to monitor and analyze the traffic and behavior of the web app.
 * **Path** is a built-in module in NOde.js that provides utilities for working with file and directory paths.
+
+## Controller Directory 
+
+## Middleware Directory
+
+## Models Directory
+
+## node_modules Directory
+
+## routes Directory

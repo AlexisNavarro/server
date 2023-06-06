@@ -1,8 +1,11 @@
 # Purpose
 
-This repository will be containing the source code for my personal project which is to create a web application similar to facebook. This project will allow me to get a hands on experience in full stack development which will require me to use javascript and various frameworks such as
+This repository will be containing the source code for my personal project which is to create a web application similar to facebook. This project will allow me to get a hands on experience in full stack development which will require me to use javascript and various frameworks such as Express.js, React and Node.js, and creating a database to store my web app information which is MongoDB
 
-Definition of Middleware: a software component or function that sits between the client and server and helps handle requests and responses. It is a way to extend the functionality of a web application by performing various tasks during the processing of HTTP requests.
+## Imports
+Being that this will be an individual full stack development for a web application, there will be a need for various imports of packages and modules which will assist me in this personal project.
+
+*Definition of Middleware: a software component or function that sits between the client and server and helps handle requests and responses. It is a way to extend the functionality of a web application by performing various tasks during the processing of HTTP requests.*
 
 * **Mongoose** to access my database in mongoDB.
 * **Express** from Node.js to be able to establish routing, middleware, templating, error handling, static file serving, and application configuration.

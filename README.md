@@ -29,7 +29,7 @@ To be able to register, the backend will need various parameters which will be r
 
 Now to be able to access a user account, the backend will need to have a method to handle the functionality of login. To be able to login, the backend will recieve the email and password from the frontend, once that is obtained then its time to search for those credentials in my MongoDB database which is done by the **User.findOne()** command; In this case I will be using the **findOne** command to search by email since the emails need to be unique. Assuming the email doesn't exists in the database, then the backend will send a status 400 code to the front end with a message , but in the case that the email exist, then now I have to compare the password attached to that account which is stored in the DB with the password that the user gave me in the login form. To compare these passwords, I need to compare the passwords by using **bcrypt.compare()** with both the DB password and the given password. Assuming that the passwords don't match then the backend will send a status 400 code and an error message. 
 
-When the passwords match, then now its time to create a token by using the ** jwt from the jsonwebtoken** import which will give the logged in user a user id and a secret string for added security. 
+When the passwords match, then now its time to create a token by using the **jwt from the jsonwebtoken** import which will give the logged in user a user id and a secret string for added security. 
 
 ## Middleware Directory
 

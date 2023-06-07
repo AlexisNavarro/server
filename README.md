@@ -21,6 +21,11 @@ Being that this will be an individual full stack development for a web applicati
 
 Purpose of the Controllers directory is to hold the file **auth.js** which will be responsible in handling methods for the backend to be able to register a user and log in a user. 
 
+### Imports used
+* Bcrypt
+* jwt
+* User
+
 ### Register
 
 To be able to register, the backend will need various parameters which will be recieved from the frontend, to be able to obtain these parameters from the frontend, the register in the backend will access the request body(req.body) information. Once the user information from the frontend is obtained, I now need to create that specific user, but before the information of the user is stored, I first need to encrypt the users password by using **bcrypt.genSalt()** to obtain a salt and then use **bcyrpt.hash()** to hash the password that the user submitted. Now with that I can create a new user with its required parameters and the hashedPassword. When the new user is made, the backend will send a status 201 code to the frontend to confirm the new user account being created, if not then the frontend will get a status 500 and an error message.  
@@ -30,8 +35,9 @@ To be able to register, the backend will need various parameters which will be r
 Now to be able to access a user account, the backend will need to have a method to handle the functionality of login. To be able to login, the backend will recieve the email and password from the frontend, once that is obtained then its time to search for those credentials in my MongoDB database which is done by the **User.findOne()** command; In this case I will be using the **findOne** command to search by email since the emails need to be unique. Assuming the email doesn't exists in the database, then the backend will send a status 400 code to the front end with a message , but in the case that the email exist, then now I have to compare the password attached to that account which is stored in the DB with the password that the user gave me in the login form. To compare these passwords, I need to compare the passwords by using **bcrypt.compare()** with both the DB password and the given password. Assuming that the passwords don't match then the backend will send a status 400 code and an error message. 
 
 When the passwords match, then now its time to create a token by using the **jwt from the jsonwebtoken** import which will give the logged in user a user id and a secret string for added security. 
-
 ## Middleware Directory
+
+Purpose of this Directory is to be able to verify the token that is attached to the user account which was done in the Controllers Directory auth.js. To begin, the auth.js file in the middleware directory there exists a veriyToken variable that will first need to receive the "Authorization" header from the request from the frontend. In the case that the token doesn't exist then the backend will send a status 403 code to the backend.
 
 ## Models Directory
 

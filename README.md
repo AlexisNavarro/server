@@ -15,7 +15,7 @@ Being that this will be an individual full stack development for a web applicati
 * **Dotenv** is a npm package to help manage configuration or environment variables in Node.js applications. It used to store information such as API keys, database credentials, or anything sensitive that needs to be used by the application.
 * **Helmet** is a npm package to secure Express.js applications by setting various HTTP headers related to security. Easy way to enhance the security of a web app by adding a set of recommended security headers.
 * **Morgan** is a npm package that provides middleware for logging HTTP requests in Node.js applications. Morgan stores detailed information about the incoming requests and outputs it to the console or a log file which allows to monitor and analyze the traffic and behavior of the web app.
-* **Path** is a built-in module in NOde.js that provides utilities for working with file and directory paths.
+* **Path** is a built-in module in Node.js that provides utilities for working with file and directory paths.
 
 ## Controllers Directory 
 
@@ -37,7 +37,11 @@ Now to be able to access a user account, the backend will need to have a method 
 When the passwords match, then now its time to create a token by using the **jwt from the jsonwebtoken** import which will give the logged in user a user id and a secret string for added security. 
 ## Middleware Directory
 
-Purpose of this Directory is to be able to verify the token that is attached to the user account which was done in the Controllers Directory auth.js. To begin, the auth.js file in the middleware directory there exists a veriyToken variable that will first need to receive the "Authorization" header from the request from the frontend. In the case that the token doesn't exist then the backend will send a status 403 code to the backend.
+Purpose of this Directory is to be able to verify the token that is attached to the user account which was done in the Controllers Directory auth.js. To begin, the auth.js file in the middleware directory there exists a veriyToken variable that will first need to receive the "Authorization" header from the request from the frontend. In the case that the token doesn't exist then the backend will send a status 403 code to the backend. 
+
+With that first section done, then the backend needs to check if the token starts with "Bearer" if it does then we slice the token from the 7 position to the end of the token, basically taking everything from the right side of the bearer which we recieved from the front end.
+
+Then the backend needs to verify the token using the **jwt.verfify()** command which will be using the token we obtained and the JWT_Secret string. Assuming the token is verified then the backend assigns the req.user the verified status, once done the backend will use the **next()** command to proceed to the next step of the function.  
 
 ## Models Directory
 

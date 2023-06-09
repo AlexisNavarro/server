@@ -8,9 +8,12 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
-import { register } from "./controllers/auth.js"
-import authRoutes from "./routes/auth.js"
-
+import { register } from "./controllers/auth.js";
+import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/users.js";
+import postRoutes from "./routes/posts.js";
+import { verifyToken } from "./middleware/auth.js";
+import {createPost} from "./controllers/posts.js"
 
 /* Configurations */ 
 
@@ -42,13 +45,16 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 
-/*route with files*/
+/*routes with files*/
 
 app.post("/auth/register", upload.single("picture"), register);
+app.post("/posts", verifyToken, upload.single("picture"), createPost);
 
 /* Routes */
 
 app.use("/auth", authRoutes); //will be prefixed into log in 
+app.ues("/users", userRoutes);
+app.use("/posts", postRoutes);
 /* Mongoose setup */
 
 const PORT = process.env.PORT || 6001; //if the port doesn't work then 6001 will be the backup port

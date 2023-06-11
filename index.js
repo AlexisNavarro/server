@@ -53,7 +53,7 @@ app.post("/posts", verifyToken, upload.single("picture"), createPost);
 /* Routes */
 
 app.use("/auth", authRoutes); //will be prefixed into log in 
-app.ues("/users", userRoutes);
+app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
 /* Mongoose setup */
 
